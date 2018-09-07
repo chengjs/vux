@@ -68,7 +68,24 @@ extra:
       h: 900
     }]
     ```
-
+    ### 解决第一次放大图片渲染问题：
+    
+    > 右边demo就可以看出这个渲染问题
+    ```
+    <div v-transfer-dom>
+      <previewer class="see-img" :list="imgSrcList" ref="previewer" :options="imgoptions"></previewer>
+    </div>
+    ```
+    ```
+    <style scoped>
+      /*
+      不推荐使用 /deep/
+    */
+      .see-img /deep/ .pswp__img {
+          transform:rotateY(0)
+      }
+    </style>
+    ```
     ::: warning
     注意在 v2.4.0 之前 w 和 h 都必须填写
     :::
